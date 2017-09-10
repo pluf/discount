@@ -1,0 +1,39 @@
+{
+	"name" : "pluf/discount",
+	"type" : "library",
+	"description" : "A pluf module to manage discounts",
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "Mostafa Barmshory",
+			"email" : "mostafa.barmshory@dpq.co.ir",
+			"homepage" : "http://dpq.co.ir",
+			"role" : "developer"
+		}, {
+			"name" : "Mohammad Hadi Mansouri",
+			"email" : "mohammad.hadi.mansouri@dpq.co.ir",
+			"homepage" : "http://dpq.co.ir",
+			"role" : "developer"
+		}
+	],
+	"minimum-stability" : "dev",
+	"require" : {
+		"pluf/core" : "^2.1.0"
+	},
+	"include-path" : [
+		"src/"
+	],
+	"homepage" : "https://github.com/pluf/discount",
+	"support" : {
+		"email" : "info@pluf.ir",
+		"issues" : "https://github.com/pluf/discount/issues",
+		"forum" : "https://github.com/pluf/discount",
+		"wiki" : "https://github.com/pluf/discount/wiki",
+		"source" : "https://github.com/pluf/discount"
+	},
+	"keywords" : [
+		"pluf",
+		"php",
+		"pluf-module",
+		"discount"
+	]
+}
