@@ -15,7 +15,7 @@
 			"role" : "developer"
 		}
 	],
-	"minimum-stability" : "dev",
+	"minimum-stability" : "stable",
 	"require" : {
 		"pluf/core" : "^2.1.0"
 	},

@@ -1,0 +1,9 @@
+{
+  "name": "Discount",
+  "version": "0.1.0",
+  "title": "Discount",
+  "model": [
+		"Discount_Discount"
+	],
+	"permisson": []
+}
