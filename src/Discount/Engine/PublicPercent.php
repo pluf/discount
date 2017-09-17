@@ -24,4 +24,18 @@ class Discount_Engine_PublicPercent extends Discount_Engine
     {
         return 'Discount for all users base on percent of main price';
     }
+    public function consumeDiscount($discount)
+    {
+        // do nothing
+    }
+
+    public function isValid($discount)
+    {
+        $now = strtotime(date("Y-m-d H:i:s"));
+        $start = $discount->get_creation_dtime();
+        $expiryDay = ' +'.$discount->get_expiry_day().' day';
+        $expiryDTime = strtotime($expiryDay, $start);
+        return $expiryDTime > $now;
+    }
+
 }

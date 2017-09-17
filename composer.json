@@ -1,6 +1,7 @@
 {
 	"name" : "pluf/discount",
 	"type" : "library",
+	"version" : "2.1.0",
 	"description" : "A pluf module to manage discounts",
 	"license" : "MIT",
 	"authors" : [{

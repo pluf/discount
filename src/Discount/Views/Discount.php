@@ -14,19 +14,19 @@ class Discount_Views_Discount
      */
     public static function getDiscountByCode($request, $match)
     {
-        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($match['name']);
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($match['code']);
         // حق دسترسی
         // CMS_Precondition::userCanAccessContent($request, $content);
         // اجرای درخواست
         return $discount;
     }
     
-    public static function getByName($request, $match)
+    public static function getByCode($request, $match)
     {
-        $tag = Discount_Views_Discount::getDiscountByCode($request, $match);
+        $discount = Discount_Views_Discount::getDiscountByCode($request, $match);
         // حق دسترسی
         // CMS_Precondition::userCanAccessContent($request, $content);
         // اجرای درخواست
-        return new Pluf_HTTP_Response_Json($tag);
+        return new Pluf_HTTP_Response_Json($discount);
     }
 }

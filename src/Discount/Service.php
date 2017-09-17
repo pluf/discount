@@ -26,58 +26,27 @@
  */
 class Discount_Service
 {
+
+    public static function discountIsExist($code){
+        $discount = Discount_Shortcuts_GetDiscountByCodeOrNull($code);
+        return $discount != null;
+    }
     
-//     public static function create ($param, $owner = null, $ownerId = null)
-//     {
-//         $form = new Discount_Form_DiscountNew($param);
-//         $receipt = $form->save(false);
-//         $backend = $receipt->get_backend();
-//         $engine = $backend->get_engine();
-//         $engine->create($receipt);
-//         if ($owner instanceof Pluf_Model) { // Pluf module
-//             $receipt->owner_class = $owner->getClass();
-//             $receipt->owner_id = $owner->getId();
-//         } elseif (! is_null($owner)) { // module
-//             $receipt->owner_class = $owner;
-//             $receipt->owner_id = $ownerId;
-//         }
-//         $receipt->create();
-//         return $receipt;
-//     }
+    public static function discountIsValid($code){
+        $discount = Discount_Shortcuts_GetDiscountByCodeOrNull($code);
+        if($discount == null)
+            return false;
+        $engine = Discount_Shortcuts_GetEngineOrNull($discount->get_type());
+        if($engine == null)
+            return false;
+        return $engine->isValid($discount);
+    }
     
-//     public static function update ($receipt)
-//     {
-//         $backend = $receipt->get_backend();
-//         $engine = $backend->get_engine();
-//         if ($engine->update($receipt)) {
-//             $receipt->update();
-//         }
-//         return $receipt;
-//     }
-    
-//     public static function find ($owner, $ownerId = null)
-//     {
-//         // get class
-//         if ($owner instanceof Pluf_Model) { // Pluf module
-//             $ownerClass = $owner->getClass();
-//             $ownerId = $owner->getId();
-//         } elseif (! is_null($owner)) { // module
-//             $ownerClass = $owner;
-//         }
-        
-//         // get list
-//         $receipt = new Discount_Discount();
-//         $q = new Pluf_SQL('owner_class=%s AND owner_id=%s',
-//             array(
-//                 $ownerClass,
-//                 $ownerId
-//             ));
-//         $list = $receipt->getList(
-//             array(
-//                 'filter' => $q->gen()
-//             ));
-//         return $list;
-//     }
+    public static function getPrice($originPrice, $discountCode){
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
+        $engine = Discount_Shortcuts_GetEngineOr404($discount->get_type());
+        return $engine->getPrice($originPrice, $discount);
+    }
     
     /**
      * فهرست موتورهای تخفیف موجود را تعیین می‌کند

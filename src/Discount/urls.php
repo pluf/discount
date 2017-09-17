@@ -2,7 +2,7 @@
 return array(
     // ************************************************************* Discount
     array( // Find
-        'regex' => '#^/discount/find$#',
+        'regex' => '#^/find$#',
         'model' => 'Pluf_Views',
         'method' => 'findObject',
         'http-method' => 'GET',
@@ -28,7 +28,7 @@ return array(
         )
     ),
     array( // Create
-        'regex' => '#^/discount/new$#',
+        'regex' => '#^/new$#',
         'model' => 'Pluf_Views',
         'method' => 'createObject',
         'http-method' => 'POST',
@@ -41,7 +41,7 @@ return array(
         )
     ),
     array( // Get info
-        'regex' => '#^/discount/(?P<modelId>\d+)$#',
+        'regex' => '#^/(?P<modelId>\d+)$#',
         'model' => 'Pluf_Views',
         'method' => 'getObject',
         'http-method' => 'GET',
@@ -52,17 +52,8 @@ return array(
             'Pluf_Precondition::loginRequired'
         )
     ),
-    array( // Get info (by code)
-        'regex' => '#^/discount/(?P<code>[^/]+)$#',
-        'model' => 'Discount_Views_Discount',
-        'method' => 'getByCode',
-        'http-method' => 'GET',
-        'precond' => array(
-            'Pluf_Precondition::loginRequired'
-        )
-    ),
     array( // Delete
-        'regex' => '#^/discount/(?P<modelId>\d+)$#',
+        'regex' => '#^/(?P<modelId>\d+)$#',
         'model' => 'Pluf_Views',
         'method' => 'deleteObject',
         'http-method' => 'DELETE',
@@ -76,7 +67,7 @@ return array(
         )
     ),
     array( // Update
-        'regex' => '#^/discount/(?P<modelId>\d+)$#',
+        'regex' => '#^/(?P<modelId>\d+)$#',
         'model' => 'Pluf_Views',
         'method' => 'updateObject',
         'http-method' => 'POST',
@@ -86,6 +77,15 @@ return array(
         'precond' => array(
             'Pluf_Precondition::loginRequired',
             'Pluf_Precondition::ownerRequired'
+        )
+    ),
+    array( // Get info (by code)
+        'regex' => '#^/(?P<code>[^/]+)$#',
+        'model' => 'Discount_Views_Discount',
+        'method' => 'getByCode',
+        'http-method' => 'GET',
+        'precond' => array(
+            'Pluf_Precondition::loginRequired'
         )
     ),
     // ************************************************************* Discount Engines

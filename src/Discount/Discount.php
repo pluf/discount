@@ -35,9 +35,10 @@ class Discount_Discount extends Pluf_Model
             ),
             'count' => array(
                 'type' => 'Pluf_DB_Field_Integer',
-                'blank' => false,
+                'blank' => true,
+                'is_null' => true,
                 'default' => 1,
-                'editable' => false,
+                'editable' => true,
                 'readable' => true
             ),
             'remain_count' => array(
@@ -56,6 +57,7 @@ class Discount_Discount extends Pluf_Model
             'name' => array(
                 'type' => 'Pluf_DB_Field_Varchar',
                 'blank' => true,
+                'is_null' => true,
                 'size' => 250,
                 'editable' => true,
                 'readable' => true
@@ -66,22 +68,26 @@ class Discount_Discount extends Pluf_Model
                 'editable' => false,
                 'readable' => true
             ),
-            'expiry_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+            'expiry_day' => array(
+                'type' => 'Pluf_DB_Field_Integer',
                 'blank' => true,
-                'editable' => false,
+                'is_null' => true,
+                'default' => NULL,
+                'editable' => true,
                 'readable' => true
             ),
             'description' => array(
                 'type' => 'Pluf_DB_Field_Varchar',
                 'blank' => true,
+                'is_null' => true,
                 'size' => 250,
                 'editable' => true,
                 'readable' => true
             ),
             'properties' => array(
                 'type' => 'Pluf_DB_Field_Varchar',
-                'blank' => false,
+                'blank' => true,
+                'is_null' => true,
                 'size' => 500,
                 'editable' => true,
                 'readable' => true
@@ -91,6 +97,7 @@ class Discount_Discount extends Pluf_Model
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'Pluf_User',
                 'blank' => true,
+                'is_null' => true,
                 'relate_name' => 'user',
                 'editable' => true,
                 'readable' => true
@@ -99,7 +106,7 @@ class Discount_Discount extends Pluf_Model
         
         $this->_a['idx'] = array(
             'discount_idx' => array(
-                'col' => 'parent, name',
+                'col' => 'code',
                 'type' => 'unique', // normal, unique, fulltext, spatial
                 'index_type' => '', // hash, btree
                 'index_option' => '',
@@ -112,8 +119,7 @@ class Discount_Discount extends Pluf_Model
     /**
      * \brief پیش ذخیره را انجام می‌دهد
      *
-     * @param $create حالت
-     *            ساخت یا به روز رسانی را تعیین می‌کند
+     * @param $create 
      */
     function preSave($create = false)
     {

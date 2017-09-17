@@ -69,9 +69,24 @@ abstract class Discount_Engine implements JsonSerializable
      * 
      * @param int $price
      * @param Discount_Discount $discount
+     * @param Pluf_HTTP_Request $request
      */
-    public abstract function getPrice($price, $discount);
+    public abstract function getPrice($price, $discount, $request);
 
+    /**
+     * Check if give discount is valid or not.
+     * 
+     * @param Discount_Discount $discount
+     * @param Pluf_HTTP_Request $request
+     */
+    public abstract function isValid($discount, $request);
+    
+    /**
+     * Cosume one unit from given discount
+     * @param Discount_Discount $discount
+     */
+    public abstract function consumeDiscount($discount);
+    
     /**
      * (non-PHPdoc)
      *
