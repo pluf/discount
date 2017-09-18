@@ -119,7 +119,8 @@ class Discount_Discount extends Pluf_Model
     /**
      * \brief پیش ذخیره را انجام می‌دهد
      *
-     * @param $create 
+     * @param
+     *            $create
      */
     function preSave($create = false)
     {
@@ -128,4 +129,12 @@ class Discount_Discount extends Pluf_Model
         }
     }
 
+    /**
+     *
+     * @return Discount_Engine
+     */
+    public function get_engine()
+    {
+        return Discount_Shortcuts_GetEngineOr404($this->type);
+    }
 }

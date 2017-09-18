@@ -40,18 +40,6 @@ return array(
             'Pluf_Precondition::ownerRequired'
         )
     ),
-    array( // Get info
-        'regex' => '#^/(?P<modelId>\d+)$#',
-        'model' => 'Pluf_Views',
-        'method' => 'getObject',
-        'http-method' => 'GET',
-        'params' => array(
-            'model' => 'Discount_Discount'
-        ),
-        'precond' => array(
-            'Pluf_Precondition::loginRequired'
-        )
-    ),
     array( // Delete
         'regex' => '#^/(?P<modelId>\d+)$#',
         'model' => 'Pluf_Views',
@@ -77,6 +65,15 @@ return array(
         'precond' => array(
             'Pluf_Precondition::loginRequired',
             'Pluf_Precondition::ownerRequired'
+        )
+    ),
+    array( // Get info
+        'regex' => '#^/(?P<modelId>\d+)$#',
+        'model' => 'Discount_Views_Discount',
+        'method' => 'get',
+        'http-method' => 'GET',
+        'precond' => array(
+            'Pluf_Precondition::loginRequired'
         )
     ),
     array( // Get info (by code)
