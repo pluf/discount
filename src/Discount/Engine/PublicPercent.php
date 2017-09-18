@@ -9,7 +9,7 @@ class Discount_Engine_PublicPercent extends Discount_Engine
      * @param int $price
      * @param Discount_Discount $discount
      */
-    public function getPrice($price, $discount)
+    public function getPrice($price, $discount, $request)
     {
         if(!Discount_Engine_PublicPercent::isValid($discount, $request))
             throw new Discount_Exception_InvalidDiscount();
