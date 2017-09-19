@@ -68,7 +68,7 @@ class Discount_Discount extends Pluf_Model
                 'editable' => false,
                 'readable' => true
             ),
-            'expiry_day' => array(
+            'valid_day' => array(
                 'type' => 'Pluf_DB_Field_Integer',
                 'blank' => true,
                 'is_null' => true,
