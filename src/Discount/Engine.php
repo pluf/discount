@@ -108,7 +108,7 @@ abstract class Discount_Engine implements JsonSerializable
      */
     public function isValid($discount, $request)
     {
-        $code = Discount_Engine::validate($discount, $request);
+        $code = $this->validate($discount, $request);
         if ($code == Discount_Engine::VALIDATION_CODE_VALID)
             return true;
         return false;

@@ -12,9 +12,9 @@ class Discount_Engine_SpecialPercent extends Discount_Engine
      */
     public function getPrice($price, $discount, $request)
     {
-        if(!Discount_Engine_SpecialPercent::isValid($discount, $request))
+        if(!$this->isValid($discount, $request))
             throw new Discount_Exception_InvalidDiscount();
-        $newPrice = $price - ($price * $discount->get_off_value());
+        $newPrice = $price - ($price * $discount->off_value / 100);
         return $newPrice;
     }
 

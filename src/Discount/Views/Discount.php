@@ -44,12 +44,12 @@ class Discount_Views_Discount
      * Returns tag with given name.
      *
      * @param Pluf_HTTP_Request $request
-     * @param array $match
+     * @param string $code
      * @return Discount_Discount
      */
-    public static function getDiscountByCode($request, $match)
+    public static function getDiscountByCode($request, $code)
     {
-        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($match['code']);
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
         $discountEngine = $discount->get_engine();
         $validationCode = $discountEngine->validate($discount, $request);
         $discount->validation_code = $validationCode;
@@ -61,7 +61,7 @@ class Discount_Views_Discount
 
     public static function getByCode($request, $match)
     {
-        $discount = Discount_Views_Discount::getDiscountByCode($request, $match);
+        $discount = Discount_Views_Discount::getDiscountByCode($request, $match['code']);
         // حق دسترسی
         // CMS_Precondition::userCanAccessContent($request, $content);
         // اجرای درخواست
