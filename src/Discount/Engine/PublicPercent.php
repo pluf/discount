@@ -11,9 +11,9 @@ class Discount_Engine_PublicPercent extends Discount_Engine
      */
     public function getPrice($price, $discount, $request)
     {
-        if(!Discount_Engine_PublicPercent::isValid($discount, $request))
+        if(!$this->isValid($discount, $request))
             throw new Discount_Exception_InvalidDiscount();
-        $newPrice = $price - ($price * $discount->get_off_value());
+        $newPrice = $price - ($price * $discount->off_value / 100);
         return $newPrice;
     }
 
@@ -48,8 +48,12 @@ class Discount_Engine_PublicPercent extends Discount_Engine
     public function validate($discount, $request)
     {
         $now = strtotime(date("Y-m-d H:i:s"));
-        $start = $discount->get_creation_dtime();
-        $expiryDay = ' +' . $discount->get_expiry_day() . ' day';
+        $start = strtotime($discount->creation_dtime);
+        $day = $discount->expiry_day;
+        if($day == null || $day == 0){
+            $day = 30;
+        }
+        $expiryDay = ' +' . $day . ' day';
         $expiryDTime = strtotime($expiryDay, $start);
         if($expiryDTime < $now)
             return 2;
