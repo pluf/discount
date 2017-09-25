@@ -1,4 +1,5 @@
 <?php
+Pluf::loadFunction('Discount_Shortcuts_GetDiscountByCodeOr404');
 
 /*
  * This file is part of Pluf Framework, a simple PHP Application Framework.
@@ -66,7 +67,7 @@ class Discount_Service
      */
     public static function getPrice($originPrice, $discountCode, $request)
     {
-        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($discountCode);
         $engine = $discount->get_engine();
         return $engine->getPrice($originPrice, $discount, $request);
     }
@@ -80,7 +81,7 @@ class Discount_Service
      */
     public static function consumeDiscount($discountCode)
     {
-        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($discountCode);
         $engine = $discount->get_engine();
         $engine->consumeDiscount($discount);
         return $discount;

@@ -44,7 +44,7 @@ class Discount_Discount extends Pluf_Model
             'remain_count' => array(
                 'type' => 'Pluf_DB_Field_Integer',
                 'blank' => false,
-                'default' => 1,
+                'default' => 0,
                 'editable' => false,
                 'readable' => true
             ),
@@ -126,6 +126,7 @@ class Discount_Discount extends Pluf_Model
     {
         if ($this->id == '') {
             $this->creation_dtime = gmdate('Y-m-d H:i:s');
+            $this->remain_count = $this->count;
         }
     }
 

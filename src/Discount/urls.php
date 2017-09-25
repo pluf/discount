@@ -10,17 +10,29 @@ return array(
             'model' => 'Discount_Discount',
             'listFilters' => array(
                 'id',
-                'name'
+                'name',
+                'code',
+                'type',
+                'off_value',
+                'user'
             ),
             'searchFields' => array(
+                'code',
+                'type',
                 'name',
                 'description'
             ),
             'sortFields' => array(
                 'id',
+                'code',
+                'type',
+                'count',
+                'remain_count',
+                'off_value',
+                'valid_day',
+                'user',
                 'name',
-                'creation_date',
-                'modif_dtime'
+                'creation_dtime'
             )
         ),
         'precond' => array(
