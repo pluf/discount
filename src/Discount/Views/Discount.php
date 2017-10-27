@@ -33,7 +33,7 @@ class Discount_Views_Discount
         $discount = Pluf_Shortcuts_GetObjectOr404('Discount_Discount', $match['modelId']);
         $discountEngine = $discount->get_engine();
         $validationCode = $discountEngine->validate($discount, $request);
-        $discount->validation_code = $validationCode;
+        $discount->__set('validation_code', $validationCode);
         // حق دسترسی
         // CMS_Precondition::userCanAccessContent($request, $content);
         // اجرای درخواست
@@ -52,7 +52,7 @@ class Discount_Views_Discount
         $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
         $discountEngine = $discount->get_engine();
         $validationCode = $discountEngine->validate($discount, $request);
-        $discount->validation_code = $validationCode;
+        $discount->__set('validation_code', $validationCode);
         // حق دسترسی
         // CMS_Precondition::userCanAccessContent($request, $content);
         // اجرای درخواست

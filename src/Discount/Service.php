@@ -1,4 +1,5 @@
 <?php
+Pluf::loadFunction('Discount_Shortcuts_GetDiscountByCodeOr404');
 
 /*
  * This file is part of Pluf Framework, a simple PHP Application Framework.
@@ -22,38 +23,76 @@
  * سرویس تخفیف‌ها را برای ماژولهای داخلی سیستم ایجاد می کند.
  *
  * @author hadi<mohammad.hadi.mansouri@dpq.co.ir>
- *
+ *        
  */
 class Discount_Service
 {
 
-    public static function discountIsExist($code){
+    /**
+     * Checks if discount with given code is exists.
+     * 
+     * @param string $code
+     * @return boolean
+     */
+    public static function discountIsExist($code)
+    {
         $discount = Discount_Shortcuts_GetDiscountByCodeOrNull($code);
         return $discount != null;
     }
-    
-    public static function discountIsValid($code){
+
+    /**
+     * Checks if discount with given code is valid.
+     * 
+     * @param string $code
+     * @return boolean
+     */
+    public static function discountIsValid($code)
+    {
         $discount = Discount_Shortcuts_GetDiscountByCodeOrNull($code);
-        if($discount == null)
+        if ($discount == null)
             return false;
         $engine = Discount_Shortcuts_GetEngineOrNull($discount->get_type());
-        if($engine == null)
+        if ($engine == null)
             return false;
         return $engine->isValid($discount);
     }
-    
-    public static function getPrice($originPrice, $discountCode){
-        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($code);
-        $engine = Discount_Shortcuts_GetEngineOr404($discount->get_type());
-        return $engine->getPrice($originPrice, $discount);
+
+    /**
+     * Computes and returns new price after using given discount
+     * 
+     * @param integer $originPrice
+     * @param string $discountCode
+     * @param Pluf_HTTP_Request $request
+     * @return integer
+     */
+    public static function getPrice($originPrice, $discountCode, $request)
+    {
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($discountCode);
+        $engine = $discount->get_engine();
+        return $engine->getPrice($originPrice, $discount, $request);
     }
-    
+
+    /**
+     * Decrease one unit of given discount.
+     * If discount is one-time-use it will be invalid after this function.
+     * 
+     * @param string $discountCode
+     * @return Discount_Discount
+     */
+    public static function consumeDiscount($discountCode)
+    {
+        $discount = Discount_Shortcuts_GetDiscountByCodeOr404($discountCode);
+        $engine = $discount->get_engine();
+        $engine->consumeDiscount($discount);
+        return $discount;
+    }
+
     /**
      * فهرست موتورهای تخفیف موجود را تعیین می‌کند
      *
-     * @return 
+     * @return
      */
-    public static function engines ()
+    public static function engines()
     {
         return array(
             new Discount_Engine_PublicPercent(),

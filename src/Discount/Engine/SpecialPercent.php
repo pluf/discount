@@ -55,12 +55,12 @@ class Discount_Engine_SpecialPercent extends Discount_Engine
             return Discount_Engine::VALIDATION_CODE_NOT_OWNED;
         }
         // Check expiration date
-        if ($discount->expiry_day != NULL) {
+        if ($discount->valid_day != NULL) {
             $now = strtotime(date("Y-m-d H:i:s"));
-            $start = $discount->creation_dtime;
-            $expiryDay = ' +' . $discount->expiry_day . ' day';
-            $expiryDTime = strtotime($expiryDay, $start);
-            if ($expiryDTime < $now)
+            $start = strtotime($discount->creation_dtime);
+            $validDay = ' +' . $discount->valid_day . ' day';
+            $validDateTime = strtotime($validDay, $start);
+            if ($validDateTime < $now)
                 return Discount_Engine::VALIDATION_CODE_EXPIRED;
         }
         // Check remain count
