@@ -49,13 +49,13 @@ class Discount_Engine_PublicPercent extends Discount_Engine
     {
         $now = strtotime(date("Y-m-d H:i:s"));
         $start = strtotime($discount->creation_dtime);
-        $day = $discount->expiry_day;
+        $day = $discount->valid_day;
         if($day == null || $day == 0){
             $day = 30;
         }
-        $expiryDay = ' +' . $day . ' day';
-        $expiryDTime = strtotime($expiryDay, $start);
-        if($expiryDTime < $now)
+        $validDay = ' +' . $day . ' day';
+        $validDateTime = strtotime($validDay, $start);
+        if($validDateTime < $now)
             return 2;
         return 0;
     }
