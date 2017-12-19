@@ -36,7 +36,7 @@ return array(
             )
         ),
         'precond' => array(
-            'Pluf_Precondition::loginRequired'
+            'User_Precondition::loginRequired'
         )
     ),
     array( // Create
@@ -48,8 +48,8 @@ return array(
             'model' => 'Discount_Discount'
         ),
         'precond' => array(
-            'Pluf_Precondition::loginRequired',
-            'Pluf_Precondition::ownerRequired'
+            'User_Precondition::loginRequired',
+            'User_Precondition::ownerRequired'
         )
     ),
     array( // Delete
@@ -62,8 +62,8 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'Pluf_Precondition::loginRequired',
-            'Pluf_Precondition::ownerRequired'
+            'User_Precondition::loginRequired',
+            'User_Precondition::ownerRequired'
         )
     ),
     array( // Update
@@ -75,8 +75,8 @@ return array(
             'model' => 'Discount_Discount'
         ),
         'precond' => array(
-            'Pluf_Precondition::loginRequired',
-            'Pluf_Precondition::ownerRequired'
+            'User_Precondition::loginRequired',
+            'User_Precondition::ownerRequired'
         )
     ),
     array( // Get info
@@ -85,7 +85,7 @@ return array(
         'method' => 'get',
         'http-method' => 'GET',
         'precond' => array(
-            'Pluf_Precondition::loginRequired'
+            'User_Precondition::loginRequired'
         )
     ),
     array( // Get info (by code)
@@ -94,7 +94,7 @@ return array(
         'method' => 'getByCode',
         'http-method' => 'GET',
         'precond' => array(
-            'Pluf_Precondition::loginRequired'
+            'User_Precondition::loginRequired'
         )
     ),
     // ************************************************************* Discount Engines
