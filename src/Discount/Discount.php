@@ -95,7 +95,7 @@ class Discount_Discount extends Pluf_Model
             // relations
             'user' => array(
                 'type' => 'Pluf_DB_Field_Foreignkey',
-                'model' => 'Pluf_User',
+                'model' => 'User',
                 'blank' => true,
                 'is_null' => true,
                 'relate_name' => 'user',
