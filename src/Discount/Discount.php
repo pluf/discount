@@ -4,6 +4,7 @@ class Discount_Discount extends Pluf_Model
 {
 
     /**
+     *
      * @brief مدل داده‌ای را بارگذاری می‌کند.
      *
      * @see Pluf_Model::init()
@@ -95,7 +96,7 @@ class Discount_Discount extends Pluf_Model
             // relations
             'user' => array(
                 'type' => 'Pluf_DB_Field_Foreignkey',
-                'model' => 'User',
+                'model' => 'User_Account',
                 'blank' => true,
                 'is_null' => true,
                 'relate_name' => 'user',
@@ -103,7 +104,7 @@ class Discount_Discount extends Pluf_Model
                 'readable' => true
             )
         );
-        
+
         $this->_a['idx'] = array(
             'discount_idx' => array(
                 'col' => 'code',

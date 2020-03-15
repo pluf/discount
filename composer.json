@@ -1,6 +1,7 @@
 {
 	"name" : "pluf/discount",
 	"type" : "library",
+	"version" : "6.0.5",
 	"description" : "A pluf module to manage discounts",
 	"license" : "MIT",
 	"authors" : [{
@@ -17,11 +18,11 @@
 	],
 	"minimum-stability" : "stable",
 	"require" : {
-		"pluf/core" : "5.13.x",
-		"pluf/user" : "5.13.x"
+		"pluf/core" : "6.x",
+		"pluf/user" : "6.x"
 	},
 	"require-dev" : {
-		"pluf/test" : "5.13.x"
+		"pluf/test" : "6.x"
 	},
 	"include-path" : [
 		"src/"
@@ -39,5 +40,83 @@
 		"php",
 		"pluf-module",
 		"discount"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Pluf\\Discount\\" : "src6"
+		},
+		"psr-0" : {
+			"" : "src"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Pluf\\Test\\" : "tests"
+		}
+	},
+	"repositories" : [{
+			"type" : "path",
+			"url" : "../core",
+			"name" : "pluf/core",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../test",
+			"name" : "pluf/test",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../http2",
+			"name" : "pluf/http2",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../user",
+			"name" : "pluf/user",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../workflow",
+			"name" : "pluf/workflow",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../discount",
+			"name" : "pluf/discount",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../bank",
+			"name" : "pluf/bank",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../monitor",
+			"name" : "pluf/monitor",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../backup",
+			"name" : "pluf/backup",
+			"options" : {
+				"symlink" : true
+			}
+		}
 	]
 }
