@@ -17,14 +17,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-class Discount_Exception_EngineNotFound extends Pluf_Exception
+class Discount_Exception_EngineNotFound extends  \Pluf\Exception
 {
 
     /**
      * یک نمونه از این کلاس ایجاد می‌کند.
      *
      * @param string $message            
-     * @param Pluf_Exception $previous            
+     * @param \Pluf\Exception $previous            
      * @param string $link            
      * @param string $developerMessage            
      */
