@@ -15,27 +15,27 @@ class Discount_Discount extends Pluf_Model
         $this->_a['verbose'] = 'Discount Entity';
         $this->_a['cols'] = array(
             'id' => array(
-                'type' => 'Pluf_DB_Field_Sequence',
+                'type' => 'Sequence',
                 'blank' => false,
                 'editable' => false,
                 'readable' => true
             ),
             'code' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => false,
                 'size' => 25,
                 'editable' => true,
                 'readable' => true
             ),
             'type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => false,
                 'size' => 50,
                 'editable' => true,
                 'readable' => true
             ),
             'count' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'blank' => true,
                 'is_null' => true,
                 'default' => 1,
@@ -43,20 +43,20 @@ class Discount_Discount extends Pluf_Model
                 'readable' => true
             ),
             'remain_count' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'blank' => false,
                 'default' => 0,
                 'editable' => false,
                 'readable' => true
             ),
             'off_value' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'default' => 0,
                 'editable' => true,
                 'readable' => true
             ),
             'name' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 250,
@@ -64,13 +64,13 @@ class Discount_Discount extends Pluf_Model
                 'readable' => true
             ),
             'creation_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'blank' => true,
                 'editable' => false,
                 'readable' => true
             ),
             'valid_day' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'blank' => true,
                 'is_null' => true,
                 'default' => NULL,
@@ -78,7 +78,7 @@ class Discount_Discount extends Pluf_Model
                 'readable' => true
             ),
             'description' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 250,
@@ -86,7 +86,7 @@ class Discount_Discount extends Pluf_Model
                 'readable' => true
             ),
             'properties' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 500,
@@ -95,7 +95,7 @@ class Discount_Discount extends Pluf_Model
             ),
             // relations
             'user' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'User_Account',
                 'blank' => true,
                 'is_null' => true,
