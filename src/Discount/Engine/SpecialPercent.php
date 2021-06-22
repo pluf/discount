@@ -8,11 +8,11 @@ class Discount_Engine_SpecialPercent extends Discount_Engine
      *
      * @param int $price
      * @param Discount_Discount $discount
-     * @param Pluf_HTTP_Request $request
+     * @param \Pluf\HTTP\Request $request
      */
     public function getPrice($price, $discount, $request)
     {
-        if(!$this->isValid($discount, $request))
+        if (! $this->isValid($discount, $request))
             throw new Discount_Exception_InvalidDiscount();
         $newPrice = $price - ($price * $discount->off_value / 100);
         return $newPrice;
@@ -35,17 +35,18 @@ class Discount_Engine_SpecialPercent extends Discount_Engine
     }
 
     /**
-     * Validate given discount and returns a code as result. Returned code should be as following:
+     * Validate given discount and returns a code as result.
+     * Returned code should be as following:
      *
      * <ul>
      * <li> 0: discount is valid. </li>
-     * <li> 1: discount is used before.</li> 
+     * <li> 1: discount is used before.</li>
      * <li> 2: discount is expired.</li>
      * <li> 3: discount is not owned by current user.</li>
      * </ul>
      *
      * @param Discount_Discount $discount
-     * @param Pluf_Http_Request $request
+     * @param \Pluf\HTTP\Request $request
      */
     public function validate($discount, $request)
     {
@@ -69,5 +70,4 @@ class Discount_Engine_SpecialPercent extends Discount_Engine
         }
         return Discount_Engine::VALIDATION_CODE_VALID;
     }
-
 }

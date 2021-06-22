@@ -19,7 +19,6 @@
 namespace Pluf\Discount;
 
 use Pluf;
-use Pluf_Signal;
 
 class Module extends \Pluf\Module
 {

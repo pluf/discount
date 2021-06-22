@@ -1,13 +1,13 @@
 <?php
 
-class Discount_Discount extends Pluf_Model
+class Discount_Discount extends \Pluf\Data\Model
 {
 
     /**
      *
      * @brief مدل داده‌ای را بارگذاری می‌کند.
      *
-     * @see Pluf_Model::init()
+     * @see \Pluf\Data\Model::init()
      */
     function init()
     {
